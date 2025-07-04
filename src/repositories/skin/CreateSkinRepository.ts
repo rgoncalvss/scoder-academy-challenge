@@ -17,7 +17,6 @@ export class CreateSkinRepository {
         description,
         image,
         price,
-        userId,
       },
     });
   }

@@ -10,8 +10,5 @@ model Skin {
     updatedAt DateTime  @updatedAt
     deletedAt DateTime?
 
-    userId String @db.Uuid
-    user   User   @relation(fields: [userId], references: [id])
-
     @@map("Skin")
 }

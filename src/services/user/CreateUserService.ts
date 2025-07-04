@@ -18,21 +18,8 @@ export class CreateUserService {
   }
 
   async execute(createUserDto: CreateUserDto) {
-    const existingUser = await this.getUserRepository.getByEmail(
-      createUserDto.email
-    );
-
-    if (existingUser) {
-      throw new HTTPError(409, "User with this email already exists");
-    }
-
-    const hashedPassword = await hash(createUserDto.password, 10);
-
     const userData: CreateUserData = {
       ...createUserDto,
-      status: UserStatusEnum.ACTIVE,
-      balance: 0,
-      password: hashedPassword,
     };
 
     return this.createUserRepository.execute(userData);

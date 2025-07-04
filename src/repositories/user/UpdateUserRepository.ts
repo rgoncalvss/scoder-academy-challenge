@@ -9,7 +9,7 @@ export class UpdateUserRepository {
   }
 
   async execute(updateUserData: UpdateUserDto) {
-    const { id, name, password, avatar, status } = updateUserData;
+    const { id, name, correctAnswers} = updateUserData;
 
     return this.prisma.user.update({
       where: {
@@ -17,9 +17,7 @@ export class UpdateUserRepository {
       },
       data: {
         name,
-        password,
-        avatar,
-        status,
+        correctAnswers
       },
     });
   }

@@ -24,15 +24,6 @@ export class UpdateUserService {
       throw new HTTPError(404, "User not found");
     }
 
-    if (existingUser.status !== UserStatusEnum.ACTIVE) {
-      throw new HTTPError(400, "User is not active");
-    }
-
-    if (updateUserDto.password) {
-      const hashedPassword = await hash(updateUserDto.password, 10);
-      updateUserDto.password = hashedPassword;
-    }
-
     return this.updateUserRepository.execute(updateUserDto);
   }
 }

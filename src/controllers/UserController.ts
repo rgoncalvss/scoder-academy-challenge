@@ -37,7 +37,7 @@ export class UserController {
 
     reply.status(200).send({
       success: true,
-      data: user,
+      data: {...user, correctAnswers: user.correctAnswers * 50},
     });
   }
 
@@ -49,6 +49,7 @@ export class UserController {
       ...(request.body as object),
     });
 
+    console.log(updateUserDto)
     const userUpdated = await updateUserService.execute(updateUserDto);
 
     reply.status(200).send({

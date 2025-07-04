@@ -14,12 +14,4 @@ export class GetUserRepository {
       },
     });
   }
-
-  async getByEmail(email: string) {
-    return this.prisma.user.findUnique({
-      where: {
-        email,
-      },
-    });
-  }
 }
