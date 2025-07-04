@@ -1,0 +1,10 @@
+model Question {
+  id                 String    @id @default(uuid()) @db.Uuid
+  title              String
+  alternatives       String[]  // Lista de 4 alternativas
+  correctAnswerIndex Int       // Índice da resposta correta (0 a 3)
+
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  deletedAt          DateTime?
+}
